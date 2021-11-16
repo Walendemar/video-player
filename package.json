@@ -1,10 +1,23 @@
 {
-    "name": "video-player",
-    "version": "1.0.0",
-    "license": "MIT",
-    "scripts": {
-    },
-    "dependencies": {},
-    "devDependencies": {
-    }
+  "name": "video-player",
+  "version": "1.0.0",
+  "author": "Vladimir Gordienko",
+  "description": "First app",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "electron": "^16.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.4",
+    "postcss-loader": "^6.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
+  }
 }
