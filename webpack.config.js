@@ -12,15 +12,24 @@ const PATHS = {
 const config = {
     mode: 'development',
     entry: {
-        app: PATHS.app,
+        app: path.resolve(PATHS.app, 'index.tsx'),
     },
     output: {
         filename: `index.js`,
-        path: PATHS.build,
-        publicPath: PATHS.public,
+        path: PATHS.build
     },
     module: {
         rules: [
+            {
+                test: /\.(ts|js)x?$/,
+                exclude: /node_modules/,
+                loader: require.resolve('babel-loader'),
+                options: {
+                    compact: false,
+                    cacheCompression: false,
+                    cacheDirectory: true,
+                },
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -41,8 +50,8 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Сайт',
-            template: path.resolve(__dirname, 'templates/template.html'),
+            title: 'Видео плеер',
+            template: path.resolve(__dirname, 'src/templates/index.html'),
             filename: path.resolve(__dirname, 'public/build/index.html'),
         }),
         new MiniCssExtractPlugin({
@@ -50,7 +59,7 @@ const config = {
         }),
     ],
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         modules: ['node_modules'],
         alias: {
             '@components': path.resolve(PATHS.app, 'components'),
